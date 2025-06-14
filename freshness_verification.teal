@@ -1,0 +1,295 @@
+#pragma version 6
+txn ApplicationID
+int 0
+==
+bnz main_l39
+txn OnCompletion
+int NoOp
+==
+bnz main_l3
+err
+main_l3:
+txna ApplicationArgs 0
+byte "verify_freshness"
+==
+bnz main_l5
+err
+main_l5:
+txn NumAppArgs
+int 8
+==
+assert
+txna ApplicationArgs 2
+btoi
+int 20
+<=
+txna ApplicationArgs 3
+btoi
+int 50
+<=
+&&
+txna ApplicationArgs 4
+btoi
+int 5
+>=
+&&
+txna ApplicationArgs 4
+btoi
+int 10
+<=
+&&
+txna ApplicationArgs 5
+btoi
+int 0
+>=
+&&
+txna ApplicationArgs 6
+btoi
+int 0
+>=
+&&
+txna ApplicationArgs 7
+btoi
+int 0
+>=
+&&
+assert
+int 0
+store 0
+txna ApplicationArgs 2
+btoi
+int 8
+>=
+bnz main_l38
+main_l6:
+txna ApplicationArgs 2
+btoi
+int 6
+>=
+txna ApplicationArgs 2
+btoi
+int 8
+<
+&&
+bnz main_l37
+main_l7:
+txna ApplicationArgs 2
+btoi
+int 6
+<
+bnz main_l36
+main_l8:
+txna ApplicationArgs 3
+btoi
+int 0
+>=
+txna ApplicationArgs 3
+btoi
+int 14
+<=
+&&
+bnz main_l35
+main_l9:
+txna ApplicationArgs 3
+btoi
+int 15
+>=
+txna ApplicationArgs 3
+btoi
+int 19
+<=
+&&
+bnz main_l34
+main_l10:
+txna ApplicationArgs 3
+btoi
+int 20
+>=
+txna ApplicationArgs 3
+btoi
+int 24
+<=
+&&
+bnz main_l33
+main_l11:
+txna ApplicationArgs 3
+btoi
+int 25
+>=
+txna ApplicationArgs 3
+btoi
+int 30
+<=
+&&
+bnz main_l32
+main_l12:
+txna ApplicationArgs 4
+btoi
+int 6
+>=
+txna ApplicationArgs 4
+btoi
+int 8
+<=
+&&
+bnz main_l31
+main_l13:
+txna ApplicationArgs 5
+btoi
+int 0
+==
+bnz main_l30
+main_l14:
+txna ApplicationArgs 5
+btoi
+int 0
+>
+txna ApplicationArgs 5
+btoi
+int 1
+<=
+&&
+bnz main_l29
+main_l15:
+txna ApplicationArgs 5
+btoi
+int 1
+>
+bnz main_l28
+main_l16:
+txna ApplicationArgs 6
+btoi
+int 0
+==
+bnz main_l27
+main_l17:
+txna ApplicationArgs 6
+btoi
+int 0
+>
+bnz main_l26
+main_l18:
+txna ApplicationArgs 7
+btoi
+int 0
+==
+bnz main_l25
+main_l19:
+load 0
+int 80
+>
+bnz main_l24
+load 0
+int 50
+>
+bnz main_l23
+byte "Spoiled"
+store 1
+main_l22:
+byte "freshness_score_"
+txna ApplicationArgs 1
+concat
+load 0
+app_global_put
+byte "freshness_level_"
+txna ApplicationArgs 1
+concat
+load 1
+app_global_put
+int 1
+return
+main_l23:
+byte "Moderate"
+store 1
+b main_l22
+main_l24:
+byte "Excellent"
+store 1
+b main_l22
+main_l25:
+load 0
+int 15
++
+store 0
+b main_l19
+main_l26:
+load 0
+int 5
++
+store 0
+b main_l18
+main_l27:
+load 0
+int 10
++
+store 0
+b main_l17
+main_l28:
+load 0
+int 5
++
+store 0
+b main_l16
+main_l29:
+load 0
+int 10
++
+store 0
+b main_l15
+main_l30:
+load 0
+int 15
++
+store 0
+b main_l14
+main_l31:
+load 0
+int 10
++
+store 0
+b main_l13
+main_l32:
+load 0
+int 10
++
+store 0
+b main_l12
+main_l33:
+load 0
+int 20
++
+store 0
+b main_l11
+main_l34:
+load 0
+int 15
++
+store 0
+b main_l10
+main_l35:
+load 0
+int 10
++
+store 0
+b main_l9
+main_l36:
+load 0
+int 10
++
+store 0
+b main_l8
+main_l37:
+load 0
+int 20
++
+store 0
+b main_l7
+main_l38:
+load 0
+int 30
++
+store 0
+b main_l6
+main_l39:
+int 1
+return

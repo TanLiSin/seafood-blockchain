@@ -1,0 +1,79 @@
+/* TradeRecord.css */
+
+header {
+    position: sticky;
+    top: 0;
+    background-color: #fff;
+    z-index: 1000;
+    border-bottom: 1px solid #eee;
+  }
+  
+  main {
+    padding-top: 20px; /* Prevent overlap with sticky header */
+  }  
+
+.company-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  .upload-form {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .file-input {
+    border: 1px solid #ccc;
+    padding: 6px;
+    border-radius: 4px;
+  }
+  
+  .upload-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .upload-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .status-message {
+    margin-top: 10px;
+    color: green;
+    font-weight: bold;
+  }
+  
+  .certificate-preview {
+    margin-top: 30px;
+  }
+  
+  .certificate-image {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .pdf-container iframe {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  .view-link {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .view-link:hover {
+    text-decoration: underline;
+  }
+  

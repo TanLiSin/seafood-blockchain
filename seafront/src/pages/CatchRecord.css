@@ -1,0 +1,115 @@
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 15px 20px;
+  max-width: 800px;
+  margin: 0 auto 40px auto;
+  background-color: #fefefe;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.form-grid label {
+  font-weight: 600;
+  color: #333;
+  align-self: center;
+}
+
+.form-grid input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: border 0.2s ease;
+}
+
+.form-grid input:focus {
+  border-color: #0088cc;
+  outline: none;
+}
+
+.form-grid button {
+  grid-column: span 2;
+  background-color: #0077b6;
+  color: white;
+  padding: 12px 20px;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.form-grid button:hover {
+  background-color: #005f89;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .form-grid button {
+    grid-column: span 1;
+  }
+}
+
+.form-container {
+  max-height: 40vh; /* You can adjust this as needed */
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.record-table-container {
+  margin-top: 20px;
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.record-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.record-table th,
+.record-table td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.record-table th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: 600;
+}
+
+.record-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.record-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.record-table button {
+  margin-right: 5px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #0077b6;
+  color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.record-table button:hover {
+  background-color: #005f89;
+}

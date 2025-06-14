@@ -1,0 +1,42 @@
+  .form-grid input[type="number"],
+  .form-grid input[type="date"],
+  .form-grid select {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .form-grid select {
+    background-color: #fff;
+  }
+  
+  .form-grid p {
+    grid-column: 1 / -1;
+    margin: 5px 0 0;
+    color: #555;
+    font-size: 0.9em;
+  }
+  
+  .form-grid button {
+    grid-column: 1 / -1;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .form-grid button:hover {
+    background-color: #0056b3;
+  }
+  
+  .form-grid button[type="button"] {
+    background-color: #6c757d;
+  }
+  
+  .form-grid button[type="button"]:hover {
+    background-color: #5a6268;
+  }
+  

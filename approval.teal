@@ -1,0 +1,9 @@
+#pragma version 6
+txna ApplicationArgs 0
+byte "create_txn"
+==
+bnz main_l2
+err
+main_l2:
+int 1
+return

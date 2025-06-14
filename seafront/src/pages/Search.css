@@ -1,0 +1,60 @@
+.search-container {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .search-container input {
+    width: 300px;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .search-container input:focus {
+    border-color: #2c3e50;
+    box-shadow: 0 0 5px rgba(44, 62, 80, 0.3);
+  }
+  
+  .search-container input::placeholder {
+    color: #bbb;
+  }
+  
+  .search-box {
+    width: 300px;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    margin: 1rem 0;
+  }
+  
+  .search-box:focus {
+    border-color: #2c3e50;
+    box-shadow: 0 0 5px rgba(44, 62, 80, 0.3);
+  }
+  
+  .search-box::placeholder {
+    color: #bbb;
+  }
+
+  .date-input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .date-input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  }  
+  
+  .indent-heading {
+    margin: 1rem 0;
+    padding-left: 1rem; /* or text-indent: 1rem; */
+  }

@@ -1,0 +1,82 @@
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-box {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  }
+  
+  .modal-box h2 {
+    color: green;
+    margin-bottom: 0.5rem;
+  }
+  
+  .modal-box h3 {
+    font-size: 1.6rem;
+    color: #0074d9;
+    margin: 0.5rem 0;
+  }
+  
+  .modal-box button {
+    background: #0074d9;
+    color: white;
+    padding: 8px 18px;
+    border: none;
+    border-radius: 6px;
+    margin-top: 1rem;
+    cursor: pointer;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  input[type="range"] {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  /* Add color themes for different modal types */
+  .modal-box.success h2 {
+    color: green;
+  }
+  
+  .modal-box.warning h2 {
+    color: orange;
+  }
+  
+  .modal-box.error h2 {
+    color: crimson;
+  }
+  
+  /* Optional button color tweaks per modal */
+  .modal-box button.secondary {
+    background-color: gray;
+  }
+  
+  .modal-box button:hover {
+    opacity: 0.9;
+  }
+  

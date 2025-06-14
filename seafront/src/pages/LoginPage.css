@@ -1,0 +1,75 @@
+/* Ensure full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Set background and center content */
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('/pictures/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container to hold the login box */
+.login-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Login box styling */
+.login-box {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
+  max-width: 380px;
+  transition: all 0.3s ease;
+}
+
+.input-group select,
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  width: 200px; /* Reduce logo size */
+  height: auto;
+  margin-bottom: 0px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* space from input */
+}
+
+.submit-btn:hover {
+  background-color: #45a049;
+}
+
