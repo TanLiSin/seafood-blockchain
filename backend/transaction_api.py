@@ -8,6 +8,9 @@ from datetime import datetime, timezone
 import psycopg2
 import algosdk
 import requests
+import sys
+
+print("✅ Python version:", sys.version)
 
 created_at = datetime.now(timezone.utc)
 
