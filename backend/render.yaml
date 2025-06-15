@@ -1,7 +1,7 @@
 services:
   - type: web
     name: seafood-transaction
-    env: python
+    env: docker
     rootDir: backend
     buildCommand: "./render-build.sh"
     startCommand: "uvicorn transaction_api:app --host 0.0.0.0 --port 10000"
@@ -11,3 +11,5 @@ services:
         fromDatabase:
           name: dpg-d170v9odl3ps739u431g-a.oregon-postgres.render.com
           property: connectionString
+          dockerfilePath: backend/Dockerfile
+
