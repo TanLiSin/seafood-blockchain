@@ -1,8 +1,0 @@
-services:
-  - type: web
-    name: seafood-transaction
-    env: docker
-    rootDir: backend
-    dockerfilePath: backend/Dockerfile
-    plan: free
-    autoDeploy: true
