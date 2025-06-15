@@ -26,7 +26,7 @@ function Transaction() {
   const fetchTransactions = async () => {
     try {
       const userId = localStorage.getItem('user_id');
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/transactions?userId=${userId}`);
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/transactions?userId=${userId}`);
       const data = await response.json();
       setTransactions(data);
     } catch (error) {
@@ -42,7 +42,7 @@ function Transaction() {
 
   const handleDeleteConfirmed = async () => {
     try {
-      await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/transactions/${transactionToDelete}`, {
+      await fetch(`${import.meta.env.VITE_NODE_API}/api/transactions/${transactionToDelete}`, {
         method: 'DELETE',
       });
 
@@ -70,7 +70,7 @@ function Transaction() {
     // Fetch notifications
     const fetchNotifications = async () => {
       if (!user_id) return;
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications?user_id=${user_id}`);
+      const res = await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications?user_id=${user_id}`);
       const data = await res.json();
       setNotifications(data);
     };
@@ -81,7 +81,7 @@ function Transaction() {
   
     // Mark notification as read
     const markAsRead = async (id) => {
-      await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications/${id}/read`, {
+      await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications/${id}/read`, {
         method: 'PATCH'
       });
       fetchNotifications();

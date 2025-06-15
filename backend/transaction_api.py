@@ -100,7 +100,7 @@ async def create_transaction(data: TransactionData):
             db.commit()
 
         try:
-            notify_res = requests.post("http://localhost:5000/api/notify-transaction", json={"transaction_id": tx_id})
+            notify_res = requests.post("https://backend-node-b313.onrender.com/api/notify-transaction", json={"transaction_id": tx_id})
             print("📢 Notification trigger response:", notify_res.status_code, notify_res.json())
         except Exception as notify_err:
             print("❌ Failed to notify end user:", notify_err)

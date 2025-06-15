@@ -11,7 +11,7 @@ function CatchRecordCustomer() {
   // Fetch all catch records
   async function fetchData() {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/catch-records`);
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/catch-records`);
       const data = await response.json();
       setRecords(data);
     } catch (error) {

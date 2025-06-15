@@ -76,7 +76,7 @@ function CatchRecord() {
 
   const handleDeleteConfirmed = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/catch-records/${recordToDelete}`, {
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/catch-records/${recordToDelete}`, {
         method: 'DELETE',
       });
       const data = await response.json();

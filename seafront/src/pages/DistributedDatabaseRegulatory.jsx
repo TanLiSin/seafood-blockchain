@@ -28,7 +28,7 @@ function DistributedDatabaseRegulatory() {
 
   const fetchFreshnessRecords = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/freshness-records`);
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/freshness-records`);
       const data = await response.json();
       setCatchRecords(data);
     } catch (error) {
@@ -39,7 +39,7 @@ function DistributedDatabaseRegulatory() {
 
   const fetchCompanyFreshness = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/company-freshness-records`);
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/company-freshness-records`);
       const data = await response.json();
       setCompanyFreshness(data);
     } catch (error) {
@@ -50,7 +50,7 @@ function DistributedDatabaseRegulatory() {
 
   const fetchSupplierFreshness = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/supplier-freshness-records`);
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/supplier-freshness-records`);
       const data = await response.json();
       setSupplierFreshness(data);
     } catch (error) {
@@ -61,7 +61,7 @@ function DistributedDatabaseRegulatory() {
 
   const fetchTransactions = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/transactions`);
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/transactions`);
       const data = await response.json();
       setTransactions(data);
     } catch (error) {
@@ -72,7 +72,7 @@ function DistributedDatabaseRegulatory() {
 
   const fetchCompanyTransactions = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/company-transactions`);
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/company-transactions`);
       const data = await response.json();
       setCompanyTransactions(data);
     } catch (error) {
@@ -83,7 +83,7 @@ function DistributedDatabaseRegulatory() {
 
   const fetchSupplierTransactions = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/supplier-transactions`);
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/supplier-transactions`);
       const data = await response.json();
       setSupplierTransactions(data);
     } catch (error) {

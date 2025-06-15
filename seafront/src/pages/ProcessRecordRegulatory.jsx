@@ -11,7 +11,7 @@ function ProcessRecordRegulatory() {
   // Fetch all process records
   async function fetchData() {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/process-records`);
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/process-records`);
       const data = await response.json();
       setRecords(data);
     } catch (error) {

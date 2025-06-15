@@ -90,7 +90,7 @@ function AdminPage() {
     }
 
     try {
-      await axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/users`, formDataToSend, {
+      await axios.post(`${import.meta.env.VITE_NODE_API}/api/users`, formDataToSend, {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
       fetchUsers();

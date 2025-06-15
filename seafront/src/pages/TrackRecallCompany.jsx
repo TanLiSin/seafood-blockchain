@@ -36,9 +36,9 @@ function TrackRecallCompany() {
       const companyName = localStorage.getItem('username');
     let url;
     if (mode === 'receiver') {
-      url = `${import.meta.env.VITE_API_BASE_URL}/api/transactions-company-receiver?companyName=${encodeURIComponent(companyName)}`;
+      url = `${import.meta.env.VITE_NODE_API}/api/transactions-company-receiver?companyName=${encodeURIComponent(companyName)}`;
     } else {
-      url = `${import.meta.env.VITE_API_BASE_URL}/api/transactions-company-sender?companyName=${encodeURIComponent(companyName)}`;
+      url = `${import.meta.env.VITE_NODE_API}/api/transactions-company-sender?companyName=${encodeURIComponent(companyName)}`;
     }
     const response = await fetch(url);
       const data = await response.json();
@@ -65,7 +65,7 @@ function TrackRecallCompany() {
     setFeedback('');
     setEditingId(null);
     setFeedbackModalOpen(true);
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/feedback/${txId}`);
+    const res = await fetch(`${import.meta.env.VITE_NODE_API}/api/feedback/${txId}`);
     const data = await res.json();
     setFeedbackList(data);
   };
@@ -74,7 +74,7 @@ function TrackRecallCompany() {
     const user_id = localStorage.getItem('user_id');
   
     // Save feedback
-    await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/feedback`, {
+    await fetch(`${import.meta.env.VITE_NODE_API}/api/feedback`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -87,8 +87,8 @@ function TrackRecallCompany() {
     // Notify sender or end user based on viewMode
     const notifyEndpoint =
       viewMode === 'receiver'
-        ? `${import.meta.env.VITE_API_BASE_URL}/api/notify-sender`
-        : `${import.meta.env.VITE_API_BASE_URL}/api/notify-enduser`;
+        ? `${import.meta.env.VITE_NODE_API}/api/notify-sender`
+        : `${import.meta.env.VITE_NODE_API}/api/notify-enduser`;
   
     await fetch(notifyEndpoint, {
       method: 'POST',
@@ -104,7 +104,7 @@ function TrackRecallCompany() {
   
   const fetchAllFeedback = async () => {
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/feedback`);
+      const res = await fetch(`${import.meta.env.VITE_NODE_API}/api/feedback`);
       const data = await res.json();
       setAllFeedback(data);
     } catch (error) {
@@ -115,7 +115,7 @@ function TrackRecallCompany() {
   const fetchNotifications = async () => {
     try {
       const user_id = localStorage.getItem('user_id');
-      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications?user_id=${user_id}`);
+      const res = await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications?user_id=${user_id}`);
       const data = await res.json();
       setNotifications(data);
       setUnreadCount(data.filter(n => !n.is_read).length);
@@ -126,7 +126,7 @@ function TrackRecallCompany() {
 
   const markAsRead = async (notificationId) => {
     try {
-      await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications/${notificationId}/read`, {
+      await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications/${notificationId}/read`, {
         method: 'PATCH'
       });
       fetchNotifications();
@@ -138,7 +138,7 @@ function TrackRecallCompany() {
   const updateFeedback = async () => {
     const user_id = localStorage.getItem('user_id');
     if (!editingId) return;
-    await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/feedback/${editingId}`, {
+    await fetch(`${import.meta.env.VITE_NODE_API}/api/feedback/${editingId}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ comment: feedback, user_id })

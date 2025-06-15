@@ -11,7 +11,7 @@ function TradeRecordRegulatory() {
   // Fetch all certificates along with company details
   async function fetchData() {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/company-certificates`);
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/company-certificates`);
       const data = await response.json();
       setRecords(data);
     } catch (error) {
@@ -82,7 +82,7 @@ function TradeRecordRegulatory() {
               <tbody>
                 {filteredRecords.length > 0 ? (
                   filteredRecords.map((record, index) => {
-                    const fileUrl = `${import.meta.env.VITE_API_BASE_URL}/uploads/company-certificates/${record.license}`;
+                    const fileUrl = `${import.meta.env.VITE_NODE_API}/uploads/company-certificates/${record.license}`;
                     return (
                       <tr key={index}>
                         <td>{record.company_name}</td>

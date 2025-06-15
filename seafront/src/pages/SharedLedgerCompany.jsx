@@ -23,11 +23,11 @@ function SharedLedgerCompany() {
   const fetchData = async () => {
     try {
       const companyId = localStorage.getItem('user_id');
-      const freshnessResponse = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/process-records?companyId=${companyId}`);
+      const freshnessResponse = await fetch(`${import.meta.env.VITE_NODE_API}/api/process-records?companyId=${companyId}`);
       const freshnessData = await freshnessResponse.json();
       setFreshnessRecords(freshnessData);
 
-      const transactionResponse = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/transactions?userId=${companyId}`);
+      const transactionResponse = await fetch(`${import.meta.env.VITE_NODE_API}/api/transactions?userId=${companyId}`);
       const transactionData = await transactionResponse.json();
       setTransactions(transactionData);
     } catch (error) {
@@ -44,7 +44,7 @@ function SharedLedgerCompany() {
   // Fetch notifications
   const fetchNotifications = async () => {
     if (!user_id) return;
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications?user_id=${user_id}`);
+    const res = await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications?user_id=${user_id}`);
     const data = await res.json();
     setNotifications(data);
   };
@@ -55,7 +55,7 @@ function SharedLedgerCompany() {
 
   // Mark notification as read
   const markAsRead = async (id) => {
-    await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications/${id}/read`, {
+    await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications/${id}/read`, {
       method: 'PATCH'
     });
     fetchNotifications();

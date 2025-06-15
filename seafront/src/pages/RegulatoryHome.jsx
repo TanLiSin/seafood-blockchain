@@ -8,7 +8,7 @@ function RegulatoryHome() {
 
   useEffect(() => {
     // Replace the URL below with your actual backend endpoint
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/users`)
+    fetch(`${import.meta.env.VITE_NODE_API}/api/users`)
       .then((response) => response.json())
       .then((data) => {
         // If user login is not implemented yet, just use the first user as placeholder

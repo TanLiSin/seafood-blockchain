@@ -12,7 +12,7 @@ function CompanyHome() {
 
   // Fetch company name
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/users`)
+    fetch(`${import.meta.env.VITE_NODE_API}/api/users`)
       .then((response) => response.json())
       .then((data) => {
         const company = data.find(user => user.role === 'Company') || data[0];
@@ -27,7 +27,7 @@ function CompanyHome() {
   // Fetch notifications
   const fetchNotifications = async () => {
     if (!user_id) return;
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications?user_id=${user_id}`);
+    const res = await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications?user_id=${user_id}`);
     const data = await res.json();
     setNotifications(data);
   };
@@ -38,7 +38,7 @@ function CompanyHome() {
 
   // Mark notification as read
   const markAsRead = async (id) => {
-    await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications/${id}/read`, {
+    await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications/${id}/read`, {
       method: 'PATCH'
     });
     fetchNotifications();

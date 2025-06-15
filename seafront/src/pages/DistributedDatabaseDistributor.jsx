@@ -27,7 +27,7 @@ function DistributedDatabaseDistributor() {
 
   const fetchFreshnessRecords = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/freshness-records`);
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/freshness-records`);
       const data = await response.json();
       setCatchRecords(data);
     } catch (error) {
@@ -38,7 +38,7 @@ function DistributedDatabaseDistributor() {
 
   const fetchTransactions = async () => {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/transactions`);
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/transactions`);
       const data = await response.json();
       setTransactions(data);
     } catch (error) {
@@ -115,7 +115,7 @@ function DistributedDatabaseDistributor() {
   // Fetch notifications
   const fetchNotifications = async () => {
     if (!user_id) return;
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications?user_id=${user_id}`);
+    const res = await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications?user_id=${user_id}`);
     const data = await res.json();
     setNotifications(data);
   };
@@ -126,7 +126,7 @@ function DistributedDatabaseDistributor() {
 
   // Mark notification as read
   const markAsRead = async (id) => {
-    await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications/${id}/read`, {
+    await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications/${id}/read`, {
       method: 'PATCH'
     });
     fetchNotifications();

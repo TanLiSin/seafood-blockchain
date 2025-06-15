@@ -17,7 +17,7 @@ function ProcessRecordDistributor() {
   async function fetchData(distributorName) {
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_BASE_URL}/api/distributor-received-records?distributorName=${distributorName}`
+        `${import.meta.env.VITE_NODE_API}/api/distributor-received-records?distributorName=${distributorName}`
       );
       const data = await response.json();
       setRecords(data);
@@ -37,7 +37,7 @@ function ProcessRecordDistributor() {
   // Fetch notifications
   const fetchNotifications = async () => {
     if (!user_id) return;
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications?user_id=${user_id}`);
+    const res = await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications?user_id=${user_id}`);
     const data = await res.json();
     setNotifications(data);
   };
@@ -48,7 +48,7 @@ function ProcessRecordDistributor() {
 
   // Mark notification as read
   const markAsRead = async (id) => {
-    await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications/${id}/read`, {
+    await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications/${id}/read`, {
       method: 'PATCH'
     });
     fetchNotifications();

@@ -71,12 +71,12 @@ function TransactionForm({ onSubmitSuccess, editTx, onCancelEdit }) {
   useEffect(() => {
     const supplierId = localStorage.getItem('user_id');
 
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/catch-records?supplierId=${supplierId}`)
+    fetch(`${import.meta.env.VITE_NODE_API}/api/catch-records?supplierId=${supplierId}`)
       .then((res) => res.json())
       .then(setProducts)
       .catch(console.error);
 
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/companies`)
+    fetch(`${import.meta.env.VITE_NODE_API}/api/companies`)
       .then((res) => res.json())
       .then(setCompanies)
       .catch(console.error);
@@ -139,7 +139,7 @@ function TransactionForm({ onSubmitSuccess, editTx, onCancelEdit }) {
 
     try {
       if (editTx) {
-        await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/transactions/${editTx.id}`, {
+        await fetch(`${import.meta.env.VITE_NODE_API}/api/transactions/${editTx.id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -152,7 +152,7 @@ function TransactionForm({ onSubmitSuccess, editTx, onCancelEdit }) {
         });
         window.location.href = '/transaction';
       } else {
-        const res = await fetch(`http://localhost:8000/api/create-transaction`, {
+        const res = await fetch(`${import.meta.env.VITE_FASTAPI_API}/api/create-transaction`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -172,7 +172,7 @@ function TransactionForm({ onSubmitSuccess, editTx, onCancelEdit }) {
         if (data.status === 'success' && data.tx_id) {
           const walletAddress = localStorage.getItem('wallet_address');
           try {
-            const balResponse = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/balance?address=${walletAddress}`);
+            const balResponse = await fetch(`${import.meta.env.VITE_NODE_API}/api/balance?address=${walletAddress}`);
             const balData = await balResponse.json();
             if (balData.status === 'success') {
               const algo = (parseInt(balData.balance) / 1_000_000).toFixed(3);

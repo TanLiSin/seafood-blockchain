@@ -29,7 +29,7 @@ function TradeRecord() {
     formData.append('userId', localStorage.getItem('user_id'));
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/upload-certificate`, {
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/upload-certificate`, {
         method: 'POST',
         body: formData,
       });
@@ -49,7 +49,7 @@ function TradeRecord() {
   const fetchLicenseFile = async () => {
     const userId = localStorage.getItem('user_id');
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/users/${userId}`);
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/users/${userId}`);
       const data = await response.json();
       setLicenseFile(data.license);
     } catch (error) {
@@ -66,7 +66,7 @@ function TradeRecord() {
   // Fetch notifications
   const fetchNotifications = async () => {
     if (!user_id) return;
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications?user_id=${user_id}`);
+    const res = await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications?user_id=${user_id}`);
     const data = await res.json();
     setNotifications(data);
   };
@@ -77,7 +77,7 @@ function TradeRecord() {
 
   // Mark notification as read
   const markAsRead = async (id) => {
-    await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications/${id}/read`, {
+    await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications/${id}/read`, {
       method: 'PATCH'
     });
     fetchNotifications();
@@ -91,7 +91,7 @@ function TradeRecord() {
   }
 
   const fileUrl = licenseFile
-    ? `${import.meta.env.VITE_API_BASE_URL}/uploads/company-certificates/${licenseFile}`
+    ? `${import.meta.env.VITE_NODE_API}/uploads/company-certificates/${licenseFile}`
     : '';
 
   return (

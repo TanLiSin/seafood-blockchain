@@ -18,7 +18,7 @@ function CatchRecordCompany() {
   // Fetch only the catch records linked to transactions where the company received the product
   async function fetchData() {
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/company-received-records?companyName=${companyName}`);
+      const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/company-received-records?companyName=${companyName}`);
       const data = await response.json();
       setRecords(data);
     } catch (error) {
@@ -34,7 +34,7 @@ function CatchRecordCompany() {
   // Fetch notifications
   const fetchNotifications = async () => {
     if (!user_id) return;
-    const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications?user_id=${user_id}`);
+    const res = await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications?user_id=${user_id}`);
     const data = await res.json();
     setNotifications(data);
   };
@@ -45,7 +45,7 @@ function CatchRecordCompany() {
 
   // Mark notification as read
   const markAsRead = async (id) => {
-    await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/notifications/${id}/read`, {
+    await fetch(`${import.meta.env.VITE_NODE_API}/api/notifications/${id}/read`, {
       method: 'PATCH'
     });
     fetchNotifications();

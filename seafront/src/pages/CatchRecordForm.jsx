@@ -128,7 +128,7 @@ function CatchRecordForm({ onSubmitSuccess, recordToEdit, onCancel }) {
 
     if (recordToEdit) {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/catch-records/${recordToEdit.product_id}`, {
+        const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/catch-records/${recordToEdit.product_id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -171,7 +171,7 @@ function CatchRecordForm({ onSubmitSuccess, recordToEdit, onCancel }) {
       setProductID(id);
 
       try {
-        const blockchainResponse = await fetch(`http://localhost:8000/api/verify-freshness`, {
+        const blockchainResponse = await fetch(`${import.meta.env.VITE_FASTAPI_API}/api/verify-freshness`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -196,7 +196,7 @@ function CatchRecordForm({ onSubmitSuccess, recordToEdit, onCancel }) {
             return;
           }
 
-          const dbResponse = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/catch-records`, {
+          const dbResponse = await fetch(`${import.meta.env.VITE_NODE_API}/api/catch-records`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -219,7 +219,7 @@ function CatchRecordForm({ onSubmitSuccess, recordToEdit, onCancel }) {
 
           if (dbResponse.ok) {
             try {
-              const balResponse = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/balance?address=${walletAddress}`);
+              const balResponse = await fetch(`${import.meta.env.VITE_NODE_API}/api/balance?address=${walletAddress}`);
               const balData = await balResponse.json();
               if (balData.status === 'success') {
                 const algo = (parseInt(balData.balance) / 1_000_000).toFixed(3);
