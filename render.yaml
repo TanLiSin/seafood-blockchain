@@ -1,18 +1,8 @@
 services:
   - type: web
-    name: transaction-api
+    name: seafood-api
     env: python
-    buildCommand: pip install -r backend/requirements.txt
-    startCommand: uvicorn backend.transaction_api:app --host 0.0.0.0 --port 10000
     plan: free
-    branch: main
-    region: Oregon
-    envVars:
-      - key: DB_HOST
-        value: dpg-d170v9odl3ps739u431g-a.oregon-postgres.render.com
-      - key: DB_USER
-        value: seafood_user
-      - key: DB_PASSWORD
-        value: jPd5HrZDqqJgoaZRCqzMjU4Q50goFrFT
-      - key: DB_NAME
-        value: seafood_db
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn transaction_api:app --host 0.0.0.0 --port 10000
