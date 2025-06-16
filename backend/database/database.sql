@@ -5,9 +5,9 @@ CREATE TABLE users (
     wallet_address TEXT UNIQUE NOT NULL,
     phone_no TEXT,
     email TEXT,
-    license TEXT -- path or filename of the uploaded PDF
-    mnemonic TEXT;
-    password TEXT;
+    license TEXT, -- path or filename of the uploaded PDF
+    mnemonic TEXT,
+    password TEXT
 
 );
 

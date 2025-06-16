@@ -1,6 +1,6 @@
 CREATE TABLE transactions (
   id SERIAL PRIMARY KEY,
-  supplier_id TEXT REFERENCES users(id),
+  user_id TEXT REFERENCES users(id),
   product_id TEXT NOT NULL,
   freshness TEXT,
   amount INTEGER NOT NULL,

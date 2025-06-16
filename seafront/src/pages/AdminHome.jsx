@@ -25,7 +25,7 @@ function AdminPage() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/users`);
+      const response = await axios.get(`${import.meta.env.VITE_NODE_API}/api/users`);
       setUsers(response.data);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -134,7 +134,7 @@ function AdminPage() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/users/${userId}`);
+      await axios.delete(`${import.meta.env.VITE_NODE_API}/api/users/${userId}`);
       alert('User deleted successfully');
       fetchUsers();
     } catch (error) {
@@ -186,7 +186,7 @@ function AdminPage() {
                 <td>{user.phone_no || 'NULL'}</td>
                 <td>
                   {user.license ? (
-                    <a href={`${import.meta.env.VITE_API_BASE_URL}/uploads/${user.license}`} target="_blank" rel="noopener noreferrer">
+                    <a href={`${import.meta.env.VITE_NODE_API}/uploads/${user.license}`} target="_blank" rel="noopener noreferrer">
                       <button>Download</button>
                     </a>
                   ) : 'No File'}
@@ -249,7 +249,7 @@ function AdminPage() {
               <div className="input-group">
                 <label>Previously Uploaded License:</label>
                 <a
-                  href={`${import.meta.env.VITE_API_BASE_URL}/uploads/${formData.existingLicense}`}
+                  href={`${import.meta.env.VITE_NODE_API}/uploads/${formData.existingLicense}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >

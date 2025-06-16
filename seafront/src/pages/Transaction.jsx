@@ -101,7 +101,7 @@ function Transaction() {
 
   const formatDateOnly = (dateString) => {
     if (!dateString) return '';
-    return new Date(dateString).toISOString().split('T')[0];
+    return new Date(dateString).toLocaleDateString('en-GB');
   };
 
   const filteredTransactions = transactions.filter((tx) =>
@@ -201,7 +201,10 @@ function Transaction() {
             <TransactionForm
               onSubmitSuccess={fetchTransactions}
               editTx={editTx}
-              onCancelEdit={() => setEditTx(null)}
+              onCancelEdit={() => {
+                setEditTx(null);
+                setShowForm(false);     // ✅ This hides the form
+              }}
             />
           ) : (
             <div className="record-table-container">

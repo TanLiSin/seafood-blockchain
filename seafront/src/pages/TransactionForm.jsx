@@ -253,7 +253,8 @@ function TransactionForm({ onSubmitSuccess, editTx, onCancelEdit }) {
           balance={algoBalance}
           onClose={() => {
             setBalanceModalVisible(false);
-            window.location.href = '/transaction';
+            onSubmitSuccess();       // ✅ Refresh list
+            onCancelEdit();          // ✅ Hide form
           }}
         />
       )}
