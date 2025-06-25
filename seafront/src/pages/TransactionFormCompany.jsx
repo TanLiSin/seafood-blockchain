@@ -207,9 +207,9 @@ function TransactionForm({ onSubmitSuccess, editTx, onCancelEdit }) {
         <label>Expiry Date:</label>
         <input type="date" name="expiryDate" value={form.expiryDate} onChange={handleChange} required />
 
-        <label>End User (Company):</label>
+        <label>End User (Distributor):</label>
         <select name="endUser" value={form.endUser} onChange={handleCompanySelect} required>
-          <option value="">Select Company</option>
+          <option value="">Select Distributor</option>
           {companies.map((c) => (
             <option key={c.user_id} value={c.username}>
               {c.username}

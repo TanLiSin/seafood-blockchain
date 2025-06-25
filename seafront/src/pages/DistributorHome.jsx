@@ -140,7 +140,7 @@ function DistributorHome() {
             </div>
             <div className="feature">
               <img src="/pictures/track-recall.png" alt="Track Recall" />
-              <Link to="/track-recall-distributor"><button>Trade Record</button></Link>
+              <Link to="/track-recall-distributor"><button>Track Recall</button></Link>
             </div>
             <div className="feature">
               <img src="/pictures/database.png" alt="Distributed Database" />
