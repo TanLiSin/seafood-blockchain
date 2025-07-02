@@ -14,17 +14,7 @@ router.get('/', async (req, res) => {
   console.log('🔎 DistributorName:', distributorName);
 
   try {
-    // Fetch freshness records linked to transactions where distributor is end_user
-    const freshnessResult = await pool.query(
-      `SELECT pr.*
-       FROM process_records pr
-       JOIN transactions t ON pr.product_id = t.product_id
-       WHERE t.end_user ILIKE $1
-       ORDER BY pr.created_at DESC`,
-      [distributorName]
-    );
-
-    // Fetch transactions linked to this distributor as end user
+    // Fetch transactions where distributor is the end user
     const transactionResult = await pool.query(
       `SELECT t.id, t.transaction_id, t.product_id, t.amount, t.freshness, t.end_user,
               s.username AS sender, s.phone_no AS sender_phone, s.email AS sender_email,
@@ -37,10 +27,30 @@ router.get('/', async (req, res) => {
       [distributorName]
     );
 
+    const cleanTransactions = transactionResult.rows.filter(row =>
+      typeof row.transaction_id === 'string' &&
+      typeof row.product_id === 'string' &&
+      typeof row.freshness === 'string' &&
+      !isNaN(Number(row.amount)) &&
+      typeof row.created_at === 'string' &&
+      typeof row.expiry_date === 'string'
+    );
+
+    // Fetch distinct freshness records per product_id using JOIN
+    const freshnessResult = await pool.query(
+      `SELECT DISTINCT ON (pr.product_id) pr.*
+       FROM process_records pr
+       JOIN transactions t ON pr.product_id = t.product_id
+       WHERE t.end_user ILIKE $1
+       ORDER BY pr.product_id, pr.created_at DESC`,
+      [distributorName]
+    );
+
     res.json({
-      freshnessRecords: freshnessResult.rows,
-      transactions: transactionResult.rows
+      freshnessRecords: freshnessResult.rows.map(r => ({ ...r, __type: 'freshness' })),
+      transactions: cleanTransactions.map(r => ({ ...r, __type: 'transaction' }))
     });
+
   } catch (error) {
     console.error('❌ Error fetching shared ledger data:', error.message);
     res.status(500).json({ error: 'Internal server error' });

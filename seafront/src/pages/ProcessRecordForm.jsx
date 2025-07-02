@@ -31,6 +31,21 @@ function ErrorModal({ title, message, onClose }) {
   );
 }
 
+function SpoiledModal({ onClose }) {
+
+  return (
+    <div className="modal-overlay">
+      <div className="modal-box error">
+        <h2>⚠️ Submission Blocked</h2>
+        <p>Cannot submit: Freshness is below moderate (Spoiled). Please discard this batch.</p>
+        <button onClick={onClose}>OK</button>
+      </div>
+
+
+    </div>
+  );
+}
+
 function ConfirmationModal({ onConfirm, onCancel }) {
   return (
     <div className="modal-overlay">
@@ -55,6 +70,7 @@ function ProcessRecordForm({ onSubmitSuccess, recordToEdit, onCancel }) {
   const [balanceModalVisible, setBalanceModalVisible] = useState(false);
   const [algoBalance, setAlgoBalance] = useState(null);
   const [errorModal, setErrorModal] = useState(null);
+  const [spoiledModalVisible, setSpoiledModalVisible] = useState(false);
 
   useEffect(() => {
     if (recordToEdit) {
@@ -120,6 +136,12 @@ function ProcessRecordForm({ onSubmitSuccess, recordToEdit, onCancel }) {
       setResult(blockchainData);
 
       if (blockchainData.status === 'success') {
+        if (blockchainData.freshness_label === 'Spoiled') {
+          setSpoiledModalVisible(true);
+          setIsSubmitting(false);
+          return;
+        }
+
         const response = await fetch(`${import.meta.env.VITE_NODE_API}/api/process-records${recordToEdit ? `/${id}` : ''}`, {
           method: recordToEdit ? 'PUT' : 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -214,6 +236,9 @@ function ProcessRecordForm({ onSubmitSuccess, recordToEdit, onCancel }) {
       </form>
 
       {confirmModalVisible && <ConfirmationModal onConfirm={proceedSubmit} onCancel={() => setConfirmModalVisible(false)} />}
+      {spoiledModalVisible && (
+        <SpoiledModal onClose={() => setSpoiledModalVisible(false)} />
+      )}
       {errorModal && <ErrorModal title={errorModal.title} message={errorModal.message} onClose={() => setErrorModal(null)} />}
       {balanceModalVisible && (
         <BalanceModal balance={algoBalance} onClose={() => { setBalanceModalVisible(false); onSubmitSuccess(); onCancel(); }} />

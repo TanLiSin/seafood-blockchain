@@ -27,6 +27,7 @@ function SharedLedgerDistributor() {
         `${import.meta.env.VITE_NODE_API}/api/shared-ledger-distributor?distributorName=${distributorName}`
       );
       const data = await response.json();
+
       setFreshnessRecords(data.freshnessRecords || []);
       setTransactions(data.transactions || []);
     } catch (error) {
@@ -34,7 +35,7 @@ function SharedLedgerDistributor() {
       setFreshnessRecords([]);
       setTransactions([]);
     }
-  };
+  };  
 
   useEffect(() => {
     fetchSharedLedgerData();
@@ -126,11 +127,12 @@ function SharedLedgerDistributor() {
 
   const renderTransactionTable = () => {
     const filteredData = filterData(transactions).filter(tx =>
-      tx.transaction_id &&
-      tx.product_id &&
-      tx.created_at &&
-      !isNaN(parseInt(tx.amount)) &&
-      typeof tx.freshness === 'string'
+      tx.__type === 'transaction' &&
+      typeof tx.transaction_id === 'string' &&
+      typeof tx.product_id === 'string' &&
+      typeof tx.created_at === 'string' &&
+      typeof tx.freshness === 'string' &&
+      !isNaN(Number(tx.amount))
     );
 
     return (

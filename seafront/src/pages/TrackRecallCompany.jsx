@@ -259,13 +259,13 @@ const feedbackChartData = {
         </div>
 
         <nav className="nav-links">
-          <Link to="/company-home" className="active">HOME</Link>
+          <Link to="/company-home">HOME</Link>
           <Link to="/process-record">PROCESS RECORD</Link>
           <Link to="/transaction-company">TRANSACTION</Link>
           <Link to="/catch-record-company">CATCH RECORD</Link>
           <Link to="/trade-record">TRADE RECORD</Link>
           <Link to="/shared-ledger-company">SHARED LEDGER</Link>
-          <Link to="/track-recall-company">TRACK & RECALL</Link>
+          <Link to="/track-recall-company" className="active">TRACK & RECALL</Link>
         </nav>
         <Link to="/" className="logout" onClick={handleLogout}>LOGOUT ⤴</Link>
       </header>
